@@ -7,15 +7,18 @@ with open('Files/artykul.txt', 'r', encoding='utf-8') as file:
     content = file.read()
 #Prompt to chat
 prompt = (f"""
-        Wczytaj zmienną o nazwie 'content'. Twoim zadaniem będzie zmodyfikowanie tekstu tak, żeby wyglądał jak artykuł i był gotowy do wrzucenia na stronę. Użyj znaczników HTML takich jak <p>, <b>, <div>, <h1> itd. Nie dodawaj własnego tekstu ani oznaczń taki jak ''',html itp.
+        Wczytaj zmienną o nazwie 'content'. Twoim zadaniem jest zmodyfikowanie tekstu tak, aby wyglądał jak artykuł gotowy do opublikowania na stronie. Użyj znaczników HTML, takich jak <p>, <b>, <div>, <h1>, itd. Zaproponuj miejsca w artykule, gdzie można dodać zdjęcia, używając znacznika <img> z atrybutem src="image_placeholder.jpg". Dodaj atrybut alt do
+        każdego obrazka z dokładnym opisem, który można wykorzystać do wygenerowania grafiki. Nie dodawaj niepotrzebnych oznaczeń, takich jak ''', html itp.
+
         Tekst do modyfikacji:
         {content}
 
         Instrukcja modyfikacji:
-        - Nie dodawaj żadnych doatkowych ozanczeń
-        - Zredagowanie tekstu.
-        - Użycie znaczników HTML.
-        - Zmodyfikowaną zawartość zwróć do zmiennej 'result'.
+        - Nie dodawaj żadnych niepotrzebnych oznaczeń.
+        - Zredaguj tekst.
+        - Zaproponuj miejsca na zdjęcia.
+        - Użyj znaczników HTML.
+        
 
         """)
 #Response to chat
@@ -35,5 +38,5 @@ result = response.choices[0].message.content
 #Save to files
 print(result)
 
-with open('artykul.html', 'w', encoding='utf-8') as file:
+with open('Files/artykul.html', 'w', encoding='utf-8') as file:
     file.write(result)
